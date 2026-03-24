@@ -1,14 +1,14 @@
-import {api_key, base_url} from "../utils/constants.jsx";
-import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {fetchWeather} from "../action/requestWeather.js";
 
 
-const Form = ({getWeather}) => {
-
+const Form = () => {
+const dispatch = useDispatch();
 
     const handleSubmit = e => {
         e.preventDefault();
         const city = e.currentTarget.city.value.trim();
-        getWeather(city)
+        dispatch(fetchWeather(city))
 
 
     }
