@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {fetchWeather} from "../action/requestWeather.js";
+import {fetchWeather} from "../features/api/reqWeather.js"
 
 
 const Form = () => {
@@ -8,7 +8,7 @@ const dispatch = useDispatch();
     const handleSubmit = e => {
         e.preventDefault();
         const city = e.currentTarget.city.value.trim();
-        dispatch(fetchWeather(city))
+        dispatch(fetchWeather(city));
 
 
     }

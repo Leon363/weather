@@ -1,13 +1,5 @@
-import {api_key, base_url} from "../utils/constants.jsx";
-// import {city} from "../configStore/store.js";
-
-
-export const PUT_WEATHER = 'PUT_WEATHER';
-
-export const putWeather = weather => ({
-    type: PUT_WEATHER,
-    payload: weather
-})
+import  {putWeather} from "../weather/weatherSlice.js";
+import {api_key, base_url} from "../../utils/constants.jsx";
 
 
 export const fetchWeather = (city) => {
@@ -16,8 +8,8 @@ export const fetchWeather = (city) => {
         dispatch(putWeather('I\'ll be right back with your weather...'));
         fetch(`${base_url}?q=${city}&appid=${api_key}&units=metric`)
             .then(res => {
-                    if (!res.ok) throw new Error();
-                    return res.json();
+                if (!res.ok) throw new Error();
+                return res.json();
             })
             .then(data => {
                 const info = {
@@ -30,6 +22,6 @@ export const fetchWeather = (city) => {
                 };
                 dispatch(putWeather(info));
             })
-            .catch(e => dispatch(putWeather('City not found or exist')));
+            .catch(() => dispatch(putWeather('City not found or exist')));
     }
 }

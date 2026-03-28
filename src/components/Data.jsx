@@ -1,19 +1,18 @@
 import Form from "./Form.jsx";
 import Weather from "./Weather.jsx";
-
-
 import {useSelector} from "react-redux";
 
-const Data = () => {
-    const weatherInfo = useSelector(state => state.weatherInfo);
-    const message = useSelector(state => state.message);
 
+const Data = () => {
+
+    const message = useSelector(state => state.message);
+    const weather = useSelector(state => state.weather);
 
 
     return (
         <div>
             <Form />
-            <Weather weather={weatherInfo} message={message}/>
+            <Weather weather={weather} message={message}/>
         </div>
     );
 };
