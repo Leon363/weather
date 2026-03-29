@@ -16,7 +16,7 @@ const dispatch = useDispatch();
     return (
         <form onSubmit={handleSubmit}>
 
-            <input type='text' name={'city'} placeholder={'Print your city'}/>
+            <input type='text' name={'city'} placeholder={'Type your city'}/>
             <button type='submit'>Get Weather</button>
         </form>
     );

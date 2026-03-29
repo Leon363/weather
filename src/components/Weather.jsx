@@ -1,16 +1,27 @@
+import {useSelector} from "react-redux";
 
-const Weather = ({weather, message}) => {
-    if (message) {
-        return (
-            <div className={'error'}>{message}</div>
-        )
-    } else {
+
+const Weather = () => {
+
+    const data = useSelector(state => state.weather);
+
+    if (typeof data === 'string') {
+
+        return <div className="infoWeath">{data}</div>;
+
+    }
+
+    if (!data) {
+        return <div className="infoWeath">Enter city</div>
+    }
+
+    else {
         return (
             <div className={'infoWeath'}>
-                <p>Location: {weather.country}, {weather.city}</p>
-                <p>Temp: {weather.temp}</p>
-                <p>Pressure: {weather.pressure}</p>
-                <p>Sunset: {weather.sunset?.toLocaleTimeString()}</p>
+                <p>Location: {data.country}, {data.city}</p>
+                <p>Temp: {data.temp}</p>
+                <p>Pressure: {data.pressure}</p>
+                <p>Sunset: {data.sunset?.toLocaleTimeString()}</p>
             </div>
         );
     }
